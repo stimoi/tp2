@@ -165,6 +165,23 @@ section:last-child { border-bottom: 0; }
 .questions h4 { margin: 0 0 4px; font-family: var(--font-display); font-size: 1rem; }
 .questions ul { margin: 0; padding-left: 20px; }
 
+/* Tests intermédiaires */
+.teste { display: block; margin-top: 8px; padding-top: 8px; border-top: 1px dashed rgba(122, 74, 36, 0.35); font-size: 0.95rem; }
+.teste::before { content: "Teste"; display: inline-block; margin-right: 8px; font-family: var(--font-pixel); font-size: 8px; letter-spacing: 0.06em; text-transform: uppercase; background: var(--jungle); color: var(--jungle-ink); padding: 3px 6px; border-radius: 3px; vertical-align: 1px; }
+
+/* Bases Python */
+.bases { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin: 18px 0; }
+.base { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
+.base h4 { margin: 0 0 6px; font-family: var(--font-display); font-size: 1.05rem; }
+.base p { margin: 0 0 6px; font-size: 0.95rem; }
+.base .jeu { margin: 0; font-size: 0.88rem; color: var(--muted); }
+.base .jeu::before { content: "Dans le jeu : "; font-weight: 700; color: var(--bark); }
+.etapes-pc { counter-reset: e; list-style: none; padding: 0; margin: 14px 0; display: grid; gap: 8px; }
+.etapes-pc li { counter-increment: e; display: grid; grid-template-columns: 32px 1fr; gap: 10px; align-items: start; }
+.etapes-pc li::before { content: counter(e); width: 28px; height: 28px; display: grid; place-items: center; border-radius: 50%; background: var(--jungle); color: var(--jungle-ink); font-weight: 700; font-size: 0.9rem; }
+.animateur { display: flex; gap: 12px; align-items: flex-start; background: var(--surface); border: 2px solid var(--bark); border-radius: var(--radius); padding: 12px 16px; margin: 18px 0; }
+.animateur strong { color: var(--bark); }
+
 /* Indices */
 .indices { display: grid; gap: 8px; margin: 18px 0; }
 details.indice { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
@@ -200,6 +217,35 @@ td.trou { color: var(--muted); font-style: italic; }
 .copy:hover { background: #26352b; }
 pre { margin: 0; padding: 14px 16px; overflow-x: auto; font-family: var(--font-code); font-size: 0.86rem; line-height: 1.45; }
 .niveaux { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 16px 0; }
+
+/* Code Python expliqué ligne par ligne */
+.py-bloc { margin: 18px 0; }
+.py-bloc .code { border-radius: var(--radius) var(--radius) 0 0; }
+.code-head .etiquette { font-family: var(--font-body); font-size: 0.75rem; color: #cfe0d4; padding-right: 6px; text-align: right; }
+pre.py { padding: 12px 0; font-variant-ligatures: none; font-feature-settings: "liga" 0, "calt" 0; }
+pre.py .l { display: block; width: max-content; min-width: 100%; min-height: 1.45em; padding-right: 16px; }
+pre.py .l::before { content: attr(data-n); display: inline-block; width: 3em; padding-right: 1em; text-align: right; color: #62796a; user-select: none; -webkit-user-select: none; }
+pre.py .l.hl { background: rgba(242, 194, 48, 0.2); box-shadow: inset 3px 0 0 #f2c230; }
+pre.py.mini { padding: 10px 12px; margin: 8px 0; background: var(--code-bg); color: var(--code-fg); border-radius: 6px; font-size: 0.8rem; }
+pre.py.mini .l { padding-right: 0; }
+pre.py.mini .l::before { content: none; }
+.tk-kw { color: #ff9e64; font-weight: 600; }
+.tk-val { color: #ff9e64; }
+.tk-str { color: #b8e186; }
+.tk-com { color: #93a99a; font-style: italic; }
+.tk-atoi, .atoi-ex { color: #2a1f00; background: #f2c230; border-radius: 3px; padding: 0 4px; font-weight: 600; font-style: normal; }
+.atoi-ex { font-family: var(--font-code); font-size: 0.85em; white-space: nowrap; }
+.tk-num { color: #f5cf4f; }
+.tk-fn { color: #7cc7f2; }
+.tk-const { color: #eaa6de; }
+.tk-self { color: #f4a291; font-style: italic; }
+.tk-cls { color: #6fdcc0; font-weight: 600; }
+.explic { list-style: none; margin: 0; padding: 0; background: var(--surface); border: 1px solid var(--line); border-top: none; border-radius: 0 0 var(--radius) var(--radius); overflow: hidden; }
+.explic li { display: grid; grid-template-columns: 4.4em 1fr; gap: 10px; padding: 9px 14px; border-top: 1px solid var(--line); font-size: 0.95rem; outline: none; }
+.explic li:first-child { border-top: none; }
+.explic li.hl { background: var(--banana-soft); }
+.explic li:focus-visible { box-shadow: inset 0 0 0 2px var(--jungle); }
+.explic .ln { font-family: var(--font-code); font-size: 0.78rem; font-weight: 600; color: var(--bark); padding-top: 3px; white-space: nowrap; }
 
 /* Arborescence */
 .tree { font-family: var(--font-code); font-size: 0.88rem; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 18px; line-height: 1.7; overflow-x: auto; white-space: pre; }
@@ -285,11 +331,11 @@ footer .wrap-in { max-width: 1180px; margin: 0 auto; padding-block: 24px 40px; }
     <div>
       <div class="eyebrow">TP Pygame &middot; Atelier création de jeux vidéo</div>
       <h1>Labyrinthe <span>du Singe</span></h1>
-      <p class="lead">Guide le singe jusqu'aux bananes. Ce jeu, tu vas l'écrire entièrement toi-même, en Python avec Pygame. Ici, aucune ligne de code n'est donnée : seulement des explications, des outils et des indices pour réfléchir.</p>
+      <p class="lead">Guide le singe jusqu'aux bananes. Ce jeu, tu vas l'écrire toi-même, en Python avec Pygame. Les morceaux de code importants te sont donnés et expliqués ligne par ligne ; les trous marqués ✏️ À toi sont pour toi.</p>
       <ul class="badges">
         <li>Niveau débutant</li>
         <li>Python 3 + Pygame</li>
-        <li>4 à 6 heures</li>
+        <li>6 à 8 heures</li>
         <li>6 étapes</li>
       </ul>
       <p class="credit">TP adapté de « DK Labyrinthe ! », chapitre du tutoriel <a href="http://sdz.tdct.org/sdz/interface-graphique-pygame-pour-python.html" target="_blank" rel="noopener">Interface graphique Pygame pour Python</a> du Site du Zéro. Personnage, images et niveaux redessinés pour l'atelier.</p>
@@ -324,7 +370,8 @@ footer .wrap-in { max-width: 1180px; margin: 0 auto; padding-block: 24px 40px; }
     <div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
     <div class="progress-label" id="progress-label">0 étape sur 6 terminée</div>
     <ol>
-      <li><a href="#avant"><span class="num"><span>·</span></span>Avant de commencer</a></li>
+      <li><a href="#avant"><span class="num"><span>·</span></span>Prise en main</a></li>
+      <li><a href="#bases"><span class="num"><span>·</span></span>Les bases Python</a></li>
       <li><a href="#cahier"><span class="num"><span>·</span></span>Le cahier des charges</a></li>
       <li><a href="#kit"><span class="num"><span>·</span></span>Images et niveaux</a></li>
       <li><a href="#fichiers"><span class="num"><span>·</span></span>Organiser ses fichiers</a></li>
@@ -346,18 +393,95 @@ footer .wrap-in { max-width: 1180px; margin: 0 auto; padding-block: 24px 40px; }
     <!-- ================= AVANT ================= -->
     <section id="avant">
       <span class="kicker">Préparation</span>
-      <h2>Avant de commencer</h2>
-      <p>Ce TP suppose que tu sais déjà écrire un petit programme Python : des variables, des conditions, des boucles « pour » et « tant que », des listes et des fonctions. Les classes vont servir aussi, mais on t'explique l'idée au moment où on en a besoin.</p>
-      <p>Il te faut Pygame. Dans un terminal, installe-le avec <span class="nom">pip</span> (le paquet s'appelle <span class="nom">pygame</span>). Pour vérifier l'installation, Pygame fournit des jeux d'exemple : lance celui qui s'appelle <span class="nom">aliens</span>, dans le module <span class="nom">pygame.examples</span>. Si un petit jeu de vaisseaux s'ouvre, tout est prêt.</p>
+      <h2>Prise en main</h2>
+      <p>Pas besoin d'être un pro pour faire ce TP. Si tu sais créer une variable, écrire un « si » et une boucle, tu as de quoi commencer. Tout le reste est expliqué en route, et la partie <a href="#bases">Les bases Python</a> juste en dessous te rappelle chaque notion dont tu auras besoin.</p>
+
+      <h3>Ton atelier de travail</h3>
+      <p>On conseille <strong>Thonny</strong>, un éditeur Python fait pour les débutants (gratuit, sur thonny.org). Il contient Python, une console en bas de l'écran et un bouton pour installer Pygame sans terminal.</p>
+      <ol class="etapes-pc">
+        <li><span><strong>Crée un dossier</strong> pour ton jeu, par exemple <span class="nom">labyrinthe</span> sur le bureau. Tous tes fichiers iront dedans, sinon le jeu ne trouvera pas ses images.</span></li>
+        <li><span><strong>Installe Pygame</strong> : dans Thonny, menu Outils, puis « Gérer les paquets… ». Cherche <span class="nom">pygame</span>, puis clique sur Installer. (Sans Thonny : dans un terminal, utilise <span class="nom">pip</span> pour installer le paquet <span class="nom">pygame</span>.)</span></li>
+        <li><span><strong>Vérifie</strong> : crée un nouveau fichier, enregistre-le dans ton dossier, et écris juste une ligne qui importe <span class="nom">pygame</span>. Lance-le avec le bouton vert (ou <kbd>F5</kbd>). Si la console affiche un message de bienvenue avec un numéro de version de Pygame, tout est prêt.</span></li>
+        <li><span><strong>Repère la console</strong>, en bas de Thonny. C'est là que s'affichent les messages de ton programme et les erreurs. Tu vas beaucoup la regarder.</span></li>
+      </ol>
       <div class="note afaire">
         <span class="label">La règle du TP</span>
-        <p>Cette page ne te donne <strong>aucune ligne de code</strong>. Tu y trouveras ce qu'il faut comprendre, les outils de Pygame qui existent, la liste de ce que ton programme doit faire, et des indices écrits en français. C'est toi qui écris tout.</p>
-        <p>Si tu bloques, ouvre les indices <strong>un par un</strong>, et cherche au moins 5 minutes avant d'ouvrir le suivant. Ton meilleur allié reste le message d'erreur : lis sa dernière ligne.</p>
+        <p>Chaque étape te donne <strong>les morceaux de code importants, expliqués ligne par ligne</strong>. Passe la souris sur une explication (ou appuie dessus) : la ligne qui correspond s'allume dans le code.</p>
+        <p><strong>Recopie le code à la main, ne fais pas de copier-coller.</strong> C'est en tapant qu'on retient la forme : les deux-points, les décalages, les parenthèses. Ne tape pas les numéros gris à gauche : ils servent seulement à repérer les lignes.</p>
+        <p>Les lignes marquées <span class="atoi-ex"># ✏️ À toi</span> sont des trous : c'est à toi de les écrire, en t'inspirant de la ligne juste au-dessus. Si tu bloques, ouvre les indices <strong>un par un</strong>, et lis la dernière ligne du message d'erreur.</p>
       </div>
       <div class="note astuce">
         <span class="label">La méthode qui marche</span>
-        <p>Avance par toutes petites étapes, et <strong>lance ton programme après chaque modification</strong>. Si ça casse, tu sais que c'est ce que tu viens d'écrire. Écrire 50 lignes d'un coup puis tester, c'est se perdre.</p>
+        <p>Avance par toutes petites étapes, et <strong>lance ton programme après chaque modification</strong>. Si ça casse, tu sais que c'est ce que tu viens d'écrire. Écrire 50 lignes d'un coup puis tester, c'est se perdre. Dans chaque mission, les cases <strong>Teste</strong> te disent quand lancer et quoi regarder.</p>
       </div>
+      <div class="note astuce">
+        <span class="label">Pourquoi ce code est bien écrit</span>
+        <p>Le code donné ici est celui qu'écrirait un programmeur soigneux. Retiens ces cinq habitudes, elles servent dans tous les jeux :</p>
+        <ul>
+          <li>chaque image est <strong>chargée une seule fois</strong>, avant les boucles, puis préparée avec <span class="nom">convert</span> ou <span class="nom">convert_alpha</span> pour s'afficher vite ;</li>
+          <li>une <strong>horloge</strong> limite le jeu à 30 tours par seconde : l'ordinateur ne chauffe pas pour rien ;</li>
+          <li>on montre l'écran <strong>une seule fois par tour</strong>, à la fin : pas de clignotement ;</li>
+          <li>les nombres et les chemins sont rangés dans <strong>un fichier de constantes</strong> : on change une valeur à un seul endroit ;</li>
+          <li>les variables ont <strong>des noms qui disent ce qu'elles contiennent</strong>, en français, sans accent.</li>
+        </ul>
+      </div>
+      <div class="note astuce">
+        <span class="label">Ton super-pouvoir : print</span>
+        <p>Quand tu ne comprends pas ce que fait ton programme, <strong>affiche tes variables</strong> dans la console avec <span class="nom">print</span>. « Où est le singe ? », « quelle touche a été appuyée ? », « qu'y a-t-il dans ma liste ? » : un print répond tout de suite. Les pros font pareil. Tu les enlèveras à la fin.</p>
+      </div>
+    </section>
+
+    <!-- ================= BASES ================= -->
+    <section id="bases">
+      <span class="kicker">Boîte à rappels</span>
+      <h2>Les bases Python dont tu auras besoin</h2>
+      <p>Voici toutes les notions de Python qui servent dans ce TP. Lis-les une fois avant de commencer, et reviens ici dès qu'un mot te bloque. Chaque fiche a un mini exemple : <strong>tape-le dans la console de Thonny</strong> (la zone en bas) et appuie sur Entrée pour le voir marcher. Ce qui suit un dièse # est un commentaire : Python l'ignore, il est là pour toi.</p>
+      <div class="bases">
+        <div class="base"><h4>Variable</h4><p>Une boîte avec un nom, dans laquelle on range une valeur. On la remplit avec le signe égal, un seul. Si on la remplit à nouveau, l'ancienne valeur est remplacée.</p><pre class="py mini">score = 0
+score = 10     # le 0 est remplacé par 10
+print(score)   # affiche 10</pre><p class="jeu">le niveau choisi, la fenêtre, la position du singe.</p></div>
+        <div class="base"><h4>Vrai ou faux</h4><p>Les deux valeurs <span class="nom">True</span> et <span class="nom">False</span>, avec une majuscule. On s'en sert pour dire « est-ce que je continue ? ».</p><pre class="py mini">continuer = True
+continuer = False   # pour arrêter</pre><p class="jeu">chaque boucle a sa variable vrai/faux.</p></div>
+        <div class="base"><h4>Comparer</h4><p>Deux signes égal collés veulent dire « est-ce égal ? ». Un point d'exclamation suivi d'un égal veut dire « est-ce différent ? ». Ne confonds pas avec le signe égal seul, qui range une valeur.</p><pre class="py mini">vies = 3
+print(vies == 3)   # True : c'est égal
+print(vies != 3)   # False : pas différent</pre><p class="jeu">« la case est-elle un mur ? ».</p></div>
+        <div class="base"><h4>Condition</h4><p>Les mots <span class="nom">if</span> (si), <span class="nom">elif</span> (sinon si) et <span class="nom">else</span> (sinon). La ligne se termine par deux-points, et ce qui dépend de la condition est décalé vers la droite.</p><pre class="py mini">if vies &gt; 0:
+    print("Encore en vie")
+else:
+    print("Perdu")</pre><p class="jeu">quelle touche a été appuyée ?</p></div>
+        <div class="base"><h4>Boucle « tant que »</h4><p>Le mot <span class="nom">while</span> : répète un bloc tant qu'une condition est vraie. Pour en sortir, on rend la condition fausse.</p><pre class="py mini">compteur = 0
+while compteur &lt; 3:
+    print(compteur)   # 0, puis 1, puis 2
+    compteur += 1</pre><p class="jeu">l'accueil et la partie tournent tant qu'on ne les arrête pas.</p></div>
+        <div class="base"><h4>Boucle « pour »</h4><p>Les mots <span class="nom">for</span> et <span class="nom">in</span> : prend les éléments d'une liste (ou les lignes d'un fichier) un par un et répète le bloc pour chacun.</p><pre class="py mini">for fruit in ["pomme", "kiwi"]:
+    print(fruit)   # pomme, puis kiwi</pre><p class="jeu">parcourir les événements, les lignes du niveau, les cases.</p></div>
+        <div class="base"><h4>Liste</h4><p>Plusieurs valeurs rangées dans l'ordre, entre crochets. On demande un élément avec son numéro entre crochets, et <strong>le premier porte le numéro 0</strong>. On ajoute à la fin avec <span class="nom">append</span>, on compte avec <span class="nom">len</span>.</p><pre class="py mini">fruits = ["pomme", "kiwi"]
+print(fruits[0])     # pomme
+fruits.append("poire")
+print(len(fruits))   # 3</pre><p class="jeu">une ligne du labyrinthe.</p></div>
+        <div class="base"><h4>Liste de listes</h4><p>Une liste dont chaque élément est lui-même une liste, comme un tableau. On met deux numéros entre crochets à la suite : d'abord celui de la ligne, puis celui de la case dans cette ligne.</p><pre class="py mini">grille = [["a", "b"],
+          ["c", "d"]]
+print(grille[1][0])   # ligne 1, case 0 : c</pre><p class="jeu">tout le labyrinthe.</p></div>
+        <div class="base"><h4>Couple</h4><p>Deux valeurs entre parenthèses, séparées par une virgule. Pygame s'en sert pour les tailles et les positions.</p><pre class="py mini">position = (90, 60)   # x = 90, y = 60</pre><p class="jeu">(450, 450) pour la fenêtre, (x, y) pour coller une image.</p></div>
+        <div class="base"><h4>Chaîne de caractères</h4><p>Du texte, entre guillemets. On peut la parcourir lettre par lettre comme une liste.</p><pre class="py mini">mot = "d00m"
+print(mot[0])     # d
+print(list(mot))  # ['d', '0', '0', 'm']</pre><p class="jeu">les noms de fichiers, les lignes du niveau, les directions.</p></div>
+        <div class="base"><h4>Fonction et appel</h4><p>Une fonction fait une action. Pour l'utiliser, on écrit son nom suivi de parenthèses, avec dedans ce qu'on lui donne (parfois rien, mais les parenthèses restent). Certaines <em>renvoient</em> un résultat qu'on range dans une variable.</p><pre class="py mini">def doubler(nombre):
+    return nombre * 2
+
+resultat = doubler(5)   # resultat vaut 10</pre><p class="jeu">ouvrir la fenêtre, charger une image.</p></div>
+        <div class="base"><h4>Le point</h4><p>Le point veut dire « qui appartient à ». Un module point une fonction, ou un objet point une de ses données. On peut enchaîner plusieurs points.</p><pre class="py mini">fruits.append("poire")   # append, de la liste fruits
+pygame.display.flip()    # flip, de display, de pygame</pre><p class="jeu">la structure du niveau du singe : trois étages reliés par des points.</p></div>
+        <div class="base"><h4>Importer</h4><p>Le mot <span class="nom">import</span> va chercher du code rangé dans un autre fichier ou une bibliothèque. Avec <span class="nom">from</span>, une étoile et <span class="nom">import</span>, on récupère tout son contenu d'un coup.</p><pre class="py mini">import random
+print(random.randint(1, 6))   # un dé à 6 faces
+from math import *            # tout le module math</pre><p class="jeu">utiliser Pygame, tes constantes, tes classes.</p></div>
+        <div class="base"><h4>Le décalage</h4><p>En Python, ce qui est décalé vers la droite (4 espaces, ou la touche <kbd>Tab</kbd>) appartient à la ligne au-dessus qui finit par deux-points. Un mauvais décalage change tout le sens du programme.</p><pre class="py mini">if vies == 0:
+    print("Perdu")   # décalé : seulement si vies vaut 0
+print("Fin")         # pas décalé : toujours</pre><p class="jeu">les boucles dans les boucles, les méthodes dans les classes.</p></div>
+        <div class="base"><h4>Ajouter 1</h4><p>Pour augmenter une variable, on peut écrire son nom, le signe plus collé au signe égal, puis la valeur à ajouter. Même chose avec le signe moins pour retirer.</p><pre class="py mini">score += 1   # pareil que : score = score + 1
+vies -= 1    # enlève 1</pre><p class="jeu">avancer le singe d'une case.</p></div>
+      </div>
+      <p>Les <strong>classes</strong> sont expliquées en détail à l'étape 3, au moment où on en a besoin.</p>
     </section>
 
     <!-- ================= CAHIER ================= -->
@@ -462,7 +586,7 @@ footer .wrap-in { max-width: 1180px; margin: 0 auto; padding-block: 24px 40px; }
 
     <!-- ================= ÉTAPE 1 ================= -->
     <section id="etape-1" data-step="1">
-      <div class="section-head"><div class="tile">1</div><div><span class="kicker">Étape 1 sur 6</span><h2>Ouvrir la fenêtre</h2></div></div>
+      <div class="section-head"><div class="tile">1</div><div><span class="kicker">Étape 1 sur 6 · Difficulté ★☆☆</span><h2>Ouvrir la fenêtre</h2></div></div>
       <dl class="fiche">
         <dt>Objectif</dt><dd>une fenêtre carrée de 450 pixels, avec un titre et une icône, qui se ferme proprement quand on clique sur la croix.</dd>
         <dt>Fichiers</dt><dd><span class="nom">constantes.py</span> et <span class="nom">labyrinthe.py</span></dd>
@@ -485,6 +609,50 @@ footer .wrap-in { max-width: 1180px; margin: 0 auto; padding-block: 24px 40px; }
         <div class="outil"><span class="nom">pygame.quit</span><span>ferme Pygame proprement. À la toute fin du programme.</span></div>
       </div>
 
+      <h3>Le code, ligne par ligne</h3>
+      <p>Voici les deux fichiers de cette étape. Lis chaque explication, puis recopie le code <strong>dans l'ordre des missions</strong> ci-dessous, en testant à chaque fois.</p>
+<figure class="py-bloc"><div class="code"><div class="code-head"><span>constantes.py</span><span class="etiquette">fichier presque complet</span></div><pre class="py">"""Constantes du Labyrinthe du Singe"""
+
+# La grille : 15 cases de 30 pixels sur chaque côté
+NOMBRE_SPRITE_COTE = 15
+TAILLE_SPRITE = 30
+COTE_FENETRE = NOMBRE_SPRITE_COTE * TAILLE_SPRITE
+
+# La fenêtre
+TITRE_FENETRE = "Labyrinthe du Singe"
+IMAGE_ICONE = "images/singe_bas.png"
+
+# Les images du décor
+IMAGE_ACCUEIL = "images/accueil.png"
+# ✏️ À toi : IMAGE_FOND, IMAGE_MUR, IMAGE_DEPART et IMAGE_ARRIVEE</pre></div><ol class="explic"><li data-l="1"><div>Le texte entre triples guillemets, tout en haut, décrit le fichier. Python ne s'en sert pas : il est là pour les humains.</div></li><li data-l="3"><div>Une ligne qui commence par # est un <strong>commentaire</strong> : Python l'ignore. Écris-en pour t'y retrouver.</div></li><li data-l="4-5"><div>Deux constantes : le nombre de cases sur un côté, et la taille d'une case en pixels. Le nom en MAJUSCULES rappelle qu'on n'y touche plus pendant le jeu. Pas d'espace ni d'accent dans un nom : on met des tirets bas.</div></li><li data-l="6"><div>La taille de la fenêtre est <strong>calculée</strong> (15 × 30 = 450), pas écrite à la main. Si tu changes une des deux lignes du dessus, la fenêtre suit toute seule.</div></li><li data-l="9-10"><div>Du texte, donc entre guillemets. Un chemin, c'est le nom du dossier, une barre oblique /, puis le nom du fichier. Utilise / même sous Windows : Python comprend.</div></li><li data-l="13"><div>Même modèle pour chaque image du décor.</div></li><li data-l="14"><div><strong>À toi</strong> : remplace ce commentaire par 4 lignes sur le modèle de la ligne 13, avec les noms de fichiers du tableau des images (fond, mur, départ, arrivée).</div></li></ol></figure>
+<figure class="py-bloc"><div class="code"><div class="code-head"><span>labyrinthe.py</span><span class="etiquette">la base de tout jeu Pygame</span></div><pre class="py">"""
+Labyrinthe du Singe
+Guide le singe jusqu'aux bananes, avec les flèches du clavier.
+Fichiers : labyrinthe.py, classes.py, constantes.py, n1, n2, images/
+"""
+
+import pygame
+from pygame.locals import *
+from constantes import *
+
+pygame.init()
+
+icone = pygame.image.load(IMAGE_ICONE)
+pygame.display.set_icon(icone)
+fenetre = pygame.display.set_mode((COTE_FENETRE, COTE_FENETRE))
+pygame.display.set_caption(TITRE_FENETRE)
+
+horloge = pygame.time.Clock()
+
+continuer = True
+while continuer:
+    horloge.tick(30)
+    for event in pygame.event.get():
+        if event.type == QUIT:
+            continuer = False
+
+pygame.quit()</pre></div><ol class="explic"><li data-l="1-5"><div>La description du jeu. Les triples guillemets permettent d'écrire sur plusieurs lignes.</div></li><li data-l="7"><div><span class="nom">import pygame</span> charge la bibliothèque Pygame. Ensuite, on écrit <span class="nom">pygame.</span> devant chacun de ses outils.</div></li><li data-l="8"><div>L'étoile veut dire « tout ». Grâce à cette ligne, on peut écrire <span class="nom">QUIT</span> au lieu de <span class="nom">pygame.locals.QUIT</span>.</div></li><li data-l="9"><div>Pareil pour ton fichier de constantes : son nom, sans le « .py ». Il doit être dans le même dossier.</div></li><li data-l="11"><div>Démarre Pygame. Une seule fois, avant tout le reste.</div></li><li data-l="13-14"><div>Charge l'image de l'icône et la donne à la fenêtre. On le fait <em>avant</em> d'ouvrir la fenêtre : certains systèmes ne regardent l'icône qu'à ce moment-là.</div></li><li data-l="15"><div>Ouvre la fenêtre. Attention aux <strong>doubles parenthèses</strong> : celles de la fonction, et celles du couple (largeur, hauteur). La fonction renvoie la fenêtre : on la range dans <span class="nom">fenetre</span> pour dessiner dessus plus tard.</div></li><li data-l="16"><div>Le titre affiché en haut de la fenêtre.</div></li><li data-l="18"><div>Crée l'horloge qui va régler la vitesse du jeu. Une seule horloge pour tout le programme.</div></li><li data-l="20-21"><div>La boucle principale : tant que <span class="nom">continuer</span> vaut <span class="nom">True</span>, on recommence. Les deux-points ouvrent un bloc : tout ce qui est décalé en dessous en fait partie.</div></li><li data-l="22"><div><span class="nom">tick(30)</span> : au plus 30 tours par seconde. Sans ça, la boucle tournerait des milliers de fois par seconde pour rien.</div></li><li data-l="23"><div>Demande la liste des événements (touches, clics, croix) et les prend un par un. Chacun s'appelle <span class="nom">event</span> le temps d'un tour.</div></li><li data-l="24-25"><div>Si l'événement est un clic sur la croix, <span class="nom">continuer</span> passe à <span class="nom">False</span> : la boucle s'arrête. Remarque le <strong>==</strong> pour comparer, et le <strong>=</strong> seul pour ranger.</div></li><li data-l="27"><div>Plus de décalage : on est sorti de la boucle. On ferme Pygame proprement.</div></li></ol></figure>
+
       <h3>Ta mission</h3>
       <ol class="mission">
         <li><strong>Remplis le fichier de constantes.</strong> Il doit contenir :
@@ -494,11 +662,24 @@ footer .wrap-in { max-width: 1180px; margin: 0 auto; padding-block: 24px 40px; }
             <li>le titre de la fenêtre et le chemin de l'image d'icône (une des images du singe) ;</li>
             <li>le chemin de chaque image du décor : accueil, fond, mur, départ, arrivée. Les chemins commencent par le nom du dossier, <span class="nom">images</span>, suivi d'une barre oblique.</li>
           </ul>
+          Chaque constante est une simple variable, une par ligne, avec un nom en majuscules (par exemple <span class="nom">TAILLE_SPRITE</span>). Les chemins sont du texte, donc entre guillemets.
+          <span class="teste">lance <span class="nom">constantes.py</span> seul. Il ne doit rien se passer du tout : pas de fenêtre, pas d'erreur. Une erreur ici veut dire une faute de frappe (guillemet oublié, espace dans un nom…).</span>
         </li>
-        <li><strong>Commence le programme principal.</strong> En haut, écris une description du jeu entre triples guillemets (son nom, son but, la liste des fichiers). Puis importe Pygame, tout le contenu de <span class="nom">pygame.locals</span> et tout le contenu de ton fichier de constantes.</li>
-        <li><strong>Démarre Pygame et ouvre la fenêtre</strong>, avec son titre et son icône, en utilisant tes constantes.</li>
-        <li><strong>Écris une boucle provisoire</strong> qui tourne tant qu'une variable vaut vrai, lit les événements, et passe cette variable à faux quand le joueur clique sur la croix. Après la boucle, ferme Pygame.</li>
+        <li><strong>Commence le programme principal.</strong> En haut, écris une description du jeu entre triples guillemets (son nom, son but, la liste des fichiers). Puis importe Pygame, tout le contenu de <span class="nom">pygame.locals</span> et tout le contenu de ton fichier de constantes.
+          <span class="teste">ajoute provisoirement un print d'une de tes constantes, par exemple la taille de la fenêtre. Si la console affiche 450, tes constantes sont bien importées. Enlève ensuite ce print.</span>
+        </li>
+        <li><strong>Démarre Pygame et ouvre la fenêtre</strong>, avec son titre et son icône, en utilisant tes constantes. La fonction qui ouvre la fenêtre renvoie la fenêtre : range-la dans une variable, par exemple <span class="nom">fenetre</span>.
+          <span class="teste">lance. Une fenêtre noire doit apparaître une fraction de seconde, puis disparaître. C'est normal : le programme arrive à sa fin. La mission suivante règle ça.</span>
+        </li>
+        <li><strong>Écris une boucle provisoire</strong> qui tourne tant qu'une variable vaut vrai, lit les événements, et passe cette variable à faux quand le joueur clique sur la croix. Après la boucle (donc sans décalage), ferme Pygame.
+          <span class="teste">la fenêtre reste ouverte, et se ferme quand tu cliques sur la croix.</span>
+        </li>
       </ol>
+
+      <div class="note astuce">
+        <span class="label">À quoi ressemble ce morceau ?</span>
+        <p>Trois étages de décalage : la boucle « tant que » tout à gauche ; dedans, décalée une fois, la boucle « pour » sur les événements ; dedans, décalée deux fois, la condition « si le type de l'événement est QUIT » ; et dedans, décalée trois fois, la ligne qui passe ta variable à faux. Tu reverras cette forme dans toutes les étapes.</p>
+      </div>
 
       <div class="indices">
         <details class="indice"><summary><span><span class="lvl">Indice 1</span>La fenêtre s'ouvre et se ferme aussitôt</span></summary><div class="body">
@@ -525,7 +706,7 @@ footer .wrap-in { max-width: 1180px; margin: 0 auto; padding-block: 24px 40px; }
 
     <!-- ================= ÉTAPE 2 ================= -->
     <section id="etape-2" data-step="2">
-      <div class="section-head"><div class="tile">2</div><div><span class="kicker">Étape 2 sur 6</span><h2>L'accueil et les boucles imbriquées</h2></div></div>
+      <div class="section-head"><div class="tile">2</div><div><span class="kicker">Étape 2 sur 6 · Difficulté ★★☆</span><h2>L'accueil et les boucles imbriquées</h2></div></div>
       <dl class="fiche">
         <dt>Objectif</dt><dd>afficher l'écran d'accueil, choisir un niveau avec <kbd>F1</kbd> ou <kbd>F2</kbd>, quitter avec <kbd>Échap</kbd> ou la croix.</dd>
         <dt>Fichier</dt><dd><span class="nom">labyrinthe.py</span> (tu remplaces la boucle provisoire)</dd>
@@ -573,19 +754,62 @@ footer .wrap-in { max-width: 1180px; margin: 0 auto; padding-block: 24px 40px; }
         <div class="outil"><span class="nom">None</span><span>la valeur Python qui veut dire « rien ». Pratique pour dire « aucun niveau choisi pour l'instant ».</span></div>
       </div>
 
+      <h3>Le code, ligne par ligne</h3>
+      <p>Ce morceau remplace la boucle provisoire de l'étape 1. Il reste un trou à combler : la ligne 22.</p>
+<figure class="py-bloc"><div class="code"><div class="code-head"><span>labyrinthe.py</span><span class="etiquette">remplace tout ce qui suit set_caption</span></div><pre class="py">horloge = pygame.time.Clock()
+accueil = pygame.image.load(IMAGE_ACCUEIL).convert()
+
+continuer = True
+while continuer:
+    fenetre.blit(accueil, (0, 0))
+    pygame.display.flip()
+
+    continuer_accueil = True
+    choix = None
+
+    while continuer_accueil:
+        horloge.tick(30)
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                continuer_accueil = False
+                continuer = False
+            elif event.type == KEYDOWN:
+                if event.key == K_F1:
+                    choix = "n1"
+                    continuer_accueil = False
+                # ✏️ À toi : F2 (niveau 2) et Échap (même effet que la croix)
+
+    if choix is not None:
+        print("Niveau choisi :", choix)
+
+pygame.quit()</pre></div><ol class="explic"><li data-l="1"><div>L'horloge de l'étape 1, toujours avant les boucles.</div></li><li data-l="2"><div>Charge l'image d'accueil, puis <span class="nom">.convert()</span> la prépare pour un affichage rapide : deux actions enchaînées par un point. Une seule fois, avant les boucles : charger une image à chaque tour ralentirait tout.</div></li><li data-l="4-5"><div>La boucle principale, qui fait tourner tout le jeu : accueil, partie, accueil…</div></li><li data-l="6"><div><span class="nom">blit</span> colle l'image d'accueil sur la fenêtre, son coin en haut à gauche au pixel (0, 0). Rien n'est encore visible à l'écran.</div></li><li data-l="7"><div><span class="nom">flip</span> montre d'un coup tout ce qui a été collé.</div></li><li data-l="9-10"><div>On remet à zéro à <strong>chaque</strong> retour à l'accueil : la boucle d'accueil doit tourner, et aucun niveau n'est choisi. <span class="nom">None</span> veut dire « rien ».</div></li><li data-l="12-13"><div>La boucle d'accueil, décalée une fois : elle est <em>dans</em> la boucle principale. <span class="nom">tick</span> limite sa vitesse.</div></li><li data-l="14"><div>La lecture des événements, comme à l'étape 1.</div></li><li data-l="15-17"><div>La croix arrête <strong>les deux</strong> boucles. Sinon, la boucle principale recommencerait et réafficherait l'accueil.</div></li><li data-l="18"><div><span class="nom">elif</span> veut dire « sinon, si ». Si l'événement est une touche enfoncée…</div></li><li data-l="19-21"><div>…et si cette touche est F1 : on retient le nom du fichier du niveau 1, et on quitte l'accueil (mais pas le programme).</div></li><li data-l="22"><div><strong>À toi</strong> : deux <span class="nom">elif</span> de plus, alignés avec le <span class="nom">if</span> de la ligne 19. Pour F2, copie le modèle de F1. Pour Échap (<span class="nom">K_ESCAPE</span>), copie plutôt le modèle de la croix.</div></li><li data-l="24-25"><div>Décalé une seule fois : on est sorti de la boucle d'accueil, mais toujours dans la principale. <span class="nom">is not None</span> veut dire « un niveau a été choisi ». Pour l'instant on l'écrit dans la console : le jeu viendra ici.</div></li><li data-l="27"><div>Toujours tout en bas, sans décalage.</div></li></ol></figure>
+
       <h3>Ta mission</h3>
       <ol class="mission">
-        <li><strong>Avant les boucles</strong>, crée l'horloge et charge l'image d'accueil (pense à la préparer avec <span class="nom">convert</span>).</li>
-        <li><strong>Écris la boucle principale.</strong> Au début de chaque tour : colle l'image d'accueil en (0, 0), montre l'écran, remets la variable de la boucle d'accueil à vrai, et la variable du choix de niveau à « rien ».</li>
-        <li><strong>Écris la boucle d'accueil</strong> à l'intérieur. À chaque tour : limite la vitesse, puis lis les événements :
+        <li><strong>Avant les boucles</strong>, garde l'horloge de l'étape 1 et charge l'image d'accueil (pense à la préparer avec <span class="nom">convert</span>). Supprime la boucle provisoire de l'étape 1, mais garde la fermeture de Pygame tout en bas.</li>
+        <li><strong>Écris la boucle principale.</strong> Au début de chaque tour : colle l'image d'accueil en (0, 0), montre l'écran, remets la variable de la boucle d'accueil à vrai, et la variable du choix de niveau à « rien ».
+          <span class="teste">pas encore : sans boucle d'accueil, le programme tournerait sans fin sans lire les événements. Écris d'abord la mission 3.</span>
+        </li>
+        <li><strong>Écris la boucle d'accueil</strong> à l'intérieur. Commence simple : à chaque tour, limite la vitesse, puis lis les événements, et gère seulement la croix. La croix doit sortir de l'accueil <em>et</em> de la boucle principale.
+          <span class="teste">l'image d'accueil s'affiche, et la croix ferme le programme.</span>
+        </li>
+        <li><strong>Ajoute les touches</strong>, toujours dans la lecture des événements :
           <ul>
-            <li>croix ou <kbd>Échap</kbd> : on doit sortir de l'accueil <em>et</em> de la boucle principale ;</li>
-            <li><kbd>F1</kbd> : on retient le nom du fichier du niveau 1 et on sort de l'accueil ;</li>
+            <li><kbd>Échap</kbd> : même effet que la croix ;</li>
+            <li><kbd>F1</kbd> : on range le nom du fichier du niveau 1 (le texte <em>n1</em>) dans la variable du choix, et on sort de l'accueil ;</li>
             <li><kbd>F2</kbd> : pareil pour le niveau 2.</li>
           </ul>
+          <span class="teste">ajoute un print de l'attribut <span class="nom">key</span> de chaque événement de touche. Appuie sur plusieurs touches : tu vois un nombre différent par touche. C'est ce nombre que Pygame compare à <span class="nom">K_F1</span>. Enlève ce print ensuite.</span>
         </li>
-        <li><strong>Après la boucle d'accueil</strong> (toujours dans la boucle principale) : si un niveau a été choisi, affiche son nom dans la console. C'est provisoire, juste pour tester. Le jeu viendra ici plus tard.</li>
+        <li><strong>Après la boucle d'accueil</strong> (décalée au même niveau qu'elle, toujours dans la boucle principale) : si un niveau a été choisi, affiche son nom dans la console. C'est provisoire, juste pour tester. Le jeu viendra ici plus tard.
+          <span class="teste">toute la liste « Ça marche si… » en bas de l'étape.</span>
+        </li>
       </ol>
+
+      <div class="note astuce">
+        <span class="label">Un événement, c'est un objet</span>
+        <p>Chaque événement donné par <span class="nom">pygame.event.get</span> est un petit paquet d'informations. On lit ses informations avec le point : l'événement, un point, puis <span class="nom">type</span> donne son genre (croix, touche…). Pour une touche, l'événement, un point, puis <span class="nom">key</span> dit laquelle. Toujours dans cet ordre : d'abord vérifier le type, ensuite regarder la touche.</p>
+      </div>
 
       <div class="questions">
         <h4>Questions à te poser avant de coder</h4>
@@ -627,7 +851,7 @@ footer .wrap-in { max-width: 1180px; margin: 0 auto; padding-block: 24px 40px; }
 
     <!-- ================= ÉTAPE 3 ================= -->
     <section id="etape-3" data-step="3">
-      <div class="section-head"><div class="tile">3</div><div><span class="kicker">Étape 3 sur 6</span><h2>Lire un niveau dans un fichier</h2></div></div>
+      <div class="section-head"><div class="tile">3</div><div><span class="kicker">Étape 3 sur 6 · Difficulté ★★★ (la plus dure)</span><h2>Lire un niveau dans un fichier</h2></div></div>
       <dl class="fiche">
         <dt>Objectif</dt><dd>transformer le fichier d'un niveau en une liste de listes, pour pouvoir demander « qu'y a-t-il dans telle case ? ».</dd>
         <dt>Fichiers</dt><dd><span class="nom">classes.py</span>, et un petit fichier de test à part</dd>
@@ -648,8 +872,43 @@ footer .wrap-in { max-width: 1180px; margin: 0 auto; padding-block: 24px 40px; }
       </div>
 
       <h3>Une classe, c'est quoi ?</h3>
-      <p>Une <strong>classe</strong> est un modèle pour fabriquer des objets. Chaque objet garde ses propres données, appelées <em>attributs</em>, et sait faire des actions, appelées <em>méthodes</em>. À l'intérieur de la classe, l'objet se désigne lui-même par le mot <span class="nom">self</span>.</p>
-      <p>La méthode spéciale <span class="nom">__init__</span> est appelée automatiquement à la création de l'objet : c'est là qu'on donne leur valeur de départ aux attributs. Notre objet « niveau » retiendra le nom de son fichier et sa structure (la liste de listes).</p>
+      <p>C'est la notion la plus nouvelle du TP. Prends le temps de lire cette partie en entier.</p>
+      <p>Imagine un <strong>moule à gâteaux</strong>. Le moule n'est pas un gâteau : c'est le modèle qui permet d'en fabriquer autant qu'on veut. Une <strong>classe</strong>, c'est le moule. Les <strong>objets</strong>, ce sont les gâteaux fabriqués avec. Avec la classe Niveau, tu fabriqueras un objet pour le niveau 1, un autre pour le niveau 2 : même moule, contenus différents.</p>
+      <p>Chaque objet a :</p>
+      <ul>
+        <li>des <strong>attributs</strong> : ses données, comme des variables rangées à l'intérieur de l'objet (le nom du fichier, la structure…) ;</li>
+        <li>des <strong>méthodes</strong> : ses actions, comme des fonctions rangées à l'intérieur de la classe (générer, afficher, se déplacer…).</li>
+      </ul>
+      <h3>La recette d'une classe, en 5 règles</h3>
+      <ol class="etapes-pc">
+        <li><span>On écrit le mot <span class="nom">class</span>, puis le nom de la classe <strong>avec une majuscule</strong>, puis deux-points. Tout ce qui appartient à la classe est décalé en dessous.</span></li>
+        <li><span>Une méthode s'écrit exactement comme une fonction (avec le mot <span class="nom">def</span>), mais décalée à l'intérieur de la classe.</span></li>
+        <li><span>Chaque méthode reçoit en <strong>premier paramètre</strong> le mot <span class="nom">self</span>. Il veut dire « l'objet lui-même ». Les autres paramètres viennent après.</span></li>
+        <li><span>La méthode spéciale <span class="nom">__init__</span> (deux tirets bas avant, deux après) est lancée automatiquement quand on fabrique un objet. C'est là qu'on crée les attributs, en écrivant <span class="nom">self</span>, un point, puis le nom de l'attribut, et sa valeur.</span></li>
+        <li><span>Pour fabriquer un objet, on « appelle » la classe comme une fonction, avec les valeurs que demande <span class="nom">__init__</span> (sans compter <span class="nom">self</span>, que Python donne tout seul). On range l'objet dans une variable. Ensuite, la variable, un point, puis le nom d'une méthode avec des parenthèses lance cette méthode.</span></li>
+      </ol>
+      <h3>Un exemple pour comprendre : le chien</h3>
+      <p>Avant le niveau, voici une petite classe qui n'a rien à voir avec le jeu. Crée un fichier à part, recopie-la, lance-la, puis modifie-la : ajoute un deuxième chien, une méthode « manger » qui redonne de l'énergie…</p>
+<figure class="py-bloc"><div class="code"><div class="code-head"><span>chien.py</span><span class="etiquette">exemple à essayer, sans rapport avec le jeu</span></div><pre class="py">class Chien:
+    """Le moule : chaque chien aura un nom et de l'énergie."""
+
+    def __init__(self, nom):
+        self.nom = nom
+        self.energie = 3
+
+    def aboyer(self):
+        print(self.nom, "dit : Wouf !")
+        self.energie -= 1
+
+
+rex = Chien("Rex")
+rex.aboyer()
+print(rex.energie)</pre></div><ol class="explic"><li data-l="1"><div>Le mot <span class="nom">class</span>, le nom avec une majuscule, deux-points. C'est le moule.</div></li><li data-l="2"><div>Une description, facultative mais utile.</div></li><li data-l="4"><div><span class="nom">__init__</span> est lancée toute seule quand on fabrique un chien. <span class="nom">self</span>, c'est le chien en train d'être fabriqué ; <span class="nom">nom</span>, c'est ce qu'on donnera entre parenthèses.</div></li><li data-l="5-6"><div>Deux <strong>attributs</strong>, rangés dans le chien grâce à <span class="nom">self.</span> : son nom (reçu) et son énergie (3 au départ, pour tous les chiens).</div></li><li data-l="8"><div>Une <strong>méthode</strong> : une action du chien. Toujours <span class="nom">self</span> en premier, même si elle ne reçoit rien d'autre.</div></li><li data-l="9-10"><div>Dans la méthode, <span class="nom">self.nom</span> retrouve le nom de <em>ce</em> chien-là. <span class="nom">-= 1</span> enlève 1 à son énergie.</div></li><li data-l="13"><div>On fabrique un chien en appelant la classe comme une fonction. « Rex » va dans <span class="nom">nom</span> ; <span class="nom">self</span>, Python le donne tout seul.</div></li><li data-l="14"><div>Lance la méthode <span class="nom">aboyer</span> de rex. La console affiche « Rex dit : Wouf ! ».</div></li><li data-l="15"><div>Affiche 2 : l'énergie a baissé. Un deuxième chien, fabriqué avec <span class="nom">Chien("Médor")</span>, aurait sa propre énergie, encore à 3.</div></li></ol></figure>
+
+      <div class="note piege">
+        <span class="label">L'oubli numéro 1</span>
+        <p>À l'intérieur d'une méthode, une variable écrite <strong>sans</strong> <span class="nom">self</span> et un point devant est une variable ordinaire : elle disparaît à la fin de la méthode. Pour qu'une donnée reste dans l'objet et soit visible des autres méthodes, il faut qu'elle soit un attribut, donc avec <span class="nom">self</span> et un point devant.</p>
+      </div>
 
       <h3>Ta boîte à outils</h3>
       <div class="outils">
@@ -662,13 +921,50 @@ footer .wrap-in { max-width: 1180px; margin: 0 auto; padding-block: 24px 40px; }
         <div class="outil"><span class="nom">len</span><span>renvoie le nombre d'éléments d'une liste.</span></div>
       </div>
 
+      <h3>Le code, ligne par ligne</h3>
+      <p>Le code ci-dessous correspond aux missions 1, 2, 4 et 5. Recopie-le dans l'ordre des missions. Le fichier de test, lui, est <strong>entièrement à toi</strong> : inspire-toi des trois dernières lignes de l'exemple du chien.</p>
+<figure class="py-bloc"><div class="code"><div class="code-head"><span>classes.py</span><span class="etiquette">la classe Niveau, première version</span></div><pre class="py">"""Classes du Labyrinthe du Singe : Niveau et Perso"""
+
+import pygame
+from pygame.locals import *
+from constantes import *
+
+
+class Niveau:
+    """Un labyrinthe, lu dans un fichier texte."""
+
+    def __init__(self, fichier):
+        self.fichier = fichier
+        self.structure = []
+
+    def generer(self):
+        """Lit le fichier et range le labyrinthe dans self.structure."""
+        structure = []
+        with open(self.fichier, "r", encoding="utf-8") as f:
+            for ligne in f:
+                ligne = ligne.rstrip("\n")
+                if ligne:
+                    structure.append(list(ligne))
+        self.structure = structure</pre></div><ol class="explic"><li data-l="1"><div>La description du fichier.</div></li><li data-l="3-5"><div>Les mêmes imports que le programme principal : les classes auront besoin de Pygame (pour les images) et des constantes.</div></li><li data-l="8-9"><div>Le moule des niveaux. Les deux lignes vides avant une classe sont une habitude de présentation.</div></li><li data-l="11"><div>Fabriquer un niveau demandera un nom de fichier : <span class="nom">Niveau("n1")</span>.</div></li><li data-l="12"><div>On garde ce nom dans l'objet, pour que <span class="nom">generer</span> puisse le retrouver plus tard.</div></li><li data-l="13"><div>La structure, vide pour l'instant. C'est <span class="nom">generer</span> qui la remplira.</div></li><li data-l="15-16"><div>La méthode qui lit le fichier.</div></li><li data-l="17"><div>Une grande liste vide, qu'on va remplir ligne par ligne.</div></li><li data-l="18"><div>Ouvre le fichier en lecture (<span class="nom">"r"</span>), avec les accents bien gérés (<span class="nom">utf-8</span>). Le mot <span class="nom">with</span> le refermera tout seul à la fin du bloc. Dans le bloc, le fichier ouvert s'appelle <span class="nom">f</span>.</div></li><li data-l="19"><div>Parcourir un fichier donne ses lignes une par une, sous forme de texte.</div></li><li data-l="20"><div>Chaque ligne finit par un retour à la ligne invisible, noté <span class="nom">\n</span>. <span class="nom">rstrip</span> renvoie la ligne sans lui : on range le résultat à nouveau dans <span class="nom">ligne</span>.</div></li><li data-l="21"><div>Un texte vide compte comme faux : les lignes vides (souvent à la fin du fichier) sont ignorées.</div></li><li data-l="22"><div><span class="nom">list("d00m")</span> donne <span class="nom">['d', '0', '0', 'm']</span> : une case par caractère. <span class="nom">append</span> ajoute cette petite liste au bout de la grande.</div></li><li data-l="23"><div>Décalé comme la ligne 17, donc après le <span class="nom">with</span> : on range la grande liste dans l'attribut. Grâce à <span class="nom">self.</span>, elle reste dans l'objet.</div></li></ol></figure>
+
       <h3>Ta mission</h3>
       <ol class="mission">
         <li><strong>Prépare le fichier de classes</strong> : une description entre triples guillemets, puis les mêmes imports que le programme principal.</li>
-        <li><strong>Crée la classe <span class="nom">Niveau</span>.</strong> À sa création, elle reçoit le nom d'un fichier de niveau. Elle le garde dans un attribut, et crée un second attribut, la structure, qui vaut une liste vide pour l'instant.</li>
-        <li><strong>Ajoute une méthode <span class="nom">generer</span></strong> qui ouvre le fichier et le parcourt ligne par ligne. Pour chaque ligne : enlever le retour à la ligne, ignorer la ligne si elle est vide, sinon la transformer en liste de caractères et l'ajouter à une grande liste. À la fin, ranger la grande liste dans l'attribut structure.</li>
-        <li><strong>Teste à part.</strong> Crée un petit fichier de test qui importe ta classe, fabrique un niveau à partir du fichier <span class="nom">n1</span>, appelle sa méthode <span class="nom">generer</span>, puis affiche dans la console : le nombre de lignes de la structure, la case en haut à gauche, la case en bas à droite, et la première case de la deuxième ligne.</li>
+        <li><strong>Crée la classe <span class="nom">Niveau</span></strong> avec seulement sa méthode <span class="nom">__init__</span>. En plus de <span class="nom">self</span>, elle reçoit le nom d'un fichier de niveau. Elle le garde dans un attribut, et crée un second attribut, la structure, qui vaut une liste vide pour l'instant.</li>
+        <li><strong>Crée un fichier de test</strong>, par exemple <span class="nom">test_niveau.py</span>, dans le même dossier. Il importe tout le contenu de ton fichier de classes, fabrique un niveau à partir du nom <em>n1</em>, puis affiche avec print l'attribut du nom de fichier de ce niveau.
+          <span class="teste">lance le fichier de test (pas le jeu). La console doit afficher <em>n1</em>. Si oui, tu sais créer une classe et un objet : le plus dur est fait.</span>
+        </li>
+        <li><strong>Ajoute une méthode <span class="nom">generer</span></strong>, en commençant par la version la plus simple : elle ouvre le fichier, le parcourt ligne par ligne, et affiche chaque ligne avec print. Dans le test, appelle cette méthode.
+          <span class="teste">les 15 lignes du labyrinthe s'affichent dans la console, avec une ligne vide entre chacune (c'est le retour à la ligne invisible, plus celui de print).</span>
+        </li>
+        <li><strong>Transforme chaque ligne</strong> : enlève le retour à la ligne, ignore la ligne si elle est vide, sinon transforme-la en liste de caractères et ajoute-la à une grande liste, créée vide avant la boucle. Après la boucle, range la grande liste dans l'attribut structure. Enlève le print de chaque ligne.
+          <span class="teste">dans le test, affiche le nombre d'éléments de la structure (15), la case en haut à gauche (<em>d</em>), la case en bas à droite (<em>a</em>), et la première case de la deuxième ligne (<em>m</em>).</span>
+        </li>
       </ol>
+
+      <div class="animateur">
+        <span><strong>Point d'étape avec l'animateur.</strong> Avant de passer à la suite, montre ton fichier de test qui fonctionne et explique avec tes mots ce que contient la structure. Si les classes restent floues, c'est le bon moment pour demander un exemple au tableau.</span>
+      </div>
 
       <div class="indices">
         <details class="indice"><summary><span><span class="lvl">Indice 1</span>Mes cases contiennent un retour à la ligne en trop</span></summary><div class="body">
@@ -694,7 +990,7 @@ footer .wrap-in { max-width: 1180px; margin: 0 auto; padding-block: 24px 40px; }
 
     <!-- ================= ÉTAPE 4 ================= -->
     <section id="etape-4" data-step="4">
-      <div class="section-head"><div class="tile">4</div><div><span class="kicker">Étape 4 sur 6</span><h2>Afficher le niveau</h2></div></div>
+      <div class="section-head"><div class="tile">4</div><div><span class="kicker">Étape 4 sur 6 · Difficulté ★★☆</span><h2>Afficher le niveau</h2></div></div>
       <dl class="fiche">
         <dt>Objectif</dt><dd>après <kbd>F1</kbd>, voir le labyrinthe complet à l'écran pendant deux secondes, puis revenir à l'accueil.</dd>
         <dt>Fichiers</dt><dd><span class="nom">classes.py</span> et <span class="nom">labyrinthe.py</span></dd>
@@ -707,17 +1003,57 @@ footer .wrap-in { max-width: 1180px; margin: 0 auto; padding-block: 24px 40px; }
 
       <h3>Ta boîte à outils</h3>
       <div class="outils">
-        <div class="outil"><span class="nom">enumerate</span><span>dans une boucle « pour », donne à chaque tour deux valeurs à la fois : le numéro de l'élément (0, 1, 2…) et l'élément lui-même.</span></div>
+        <div class="outil"><span class="nom">enumerate</span><span>dans une boucle « pour », donne à chaque tour deux valeurs à la fois : le numéro de l'élément et l'élément lui-même. Il faut donc deux noms de variables après le mot <span class="nom">for</span>, séparés par une virgule. Exemple en mots : sur la liste « pomme, banane », le premier tour donne 0 et pomme, le second donne 1 et banane.</span></div>
         <div class="outil"><span class="nom">convert_alpha</span><span>comme <span class="nom">convert</span>, mais garde la transparence de l'image.</span></div>
         <div class="outil"><span class="nom">blit</span><span>tu le connais déjà : la fenêtre colle une image à une position (x, y).</span></div>
         <div class="outil"><span class="nom">pygame.time.wait</span><span>met le programme en pause. On lui donne une durée en millisecondes (2000 = 2 secondes).</span></div>
       </div>
 
+      <h3>Le code, ligne par ligne</h3>
+      <p>Deux morceaux : ce qu'on ajoute à la classe Niveau, puis ce qu'on ajoute au programme principal. Les lignes 5 et 17 du premier morceau sont pour toi.</p>
+<figure class="py-bloc"><div class="code"><div class="code-head"><span>classes.py</span><span class="etiquette">morceau de la classe Niveau</span></div><pre class="py">    def __init__(self, fichier):
+        self.fichier = fichier
+        self.structure = []
+        self.mur = pygame.image.load(IMAGE_MUR).convert()
+        # ✏️ À toi : self.depart, puis self.arrivee (avec transparence)
+
+    # (la méthode generer de l'étape 3 ne change pas)
+
+    def afficher(self, fenetre):
+        """Dessine les murs, le départ et l'arrivée sur la fenêtre."""
+        for num_ligne, ligne in enumerate(self.structure):
+            for num_case, case in enumerate(ligne):
+                x = num_case * TAILLE_SPRITE
+                y = num_ligne * TAILLE_SPRITE
+                if case == "m":
+                    fenetre.blit(self.mur, (x, y))
+                # ✏️ À toi : elif pour "d" (départ) et "a" (arrivée)</pre></div><ol class="explic"><li data-l="1-3"><div>Le <span class="nom">__init__</span> de l'étape 3, qu'on complète. Le tout est décalé une fois, puisqu'on est dans la classe.</div></li><li data-l="4"><div>Charge l'image du mur <strong>une seule fois</strong>, à la création du niveau, et la range dans l'objet. <span class="nom">convert()</span> suffit : le mur n'a pas de transparence.</div></li><li data-l="5"><div><strong>À toi</strong> : le départ se prépare comme le mur. L'arrivée a un fond transparent : utilise <span class="nom">convert_alpha()</span> à la place de <span class="nom">convert()</span>.</div></li><li data-l="7"><div>Un commentaire pour te repérer : <span class="nom">generer</span> reste à sa place, sans changement.</div></li><li data-l="9-10"><div><span class="nom">afficher</span> reçoit la fenêtre sur laquelle dessiner.</div></li><li data-l="11"><div>Première boucle : <span class="nom">enumerate</span> donne à chaque tour le numéro de la ligne (de 0 à 14) <em>et</em> la ligne elle-même, une petite liste.</div></li><li data-l="12"><div>Seconde boucle, dans la première : le numéro de la case dans la ligne (la colonne) et son caractère. En tout, 15 × 15 = 225 tours.</div></li><li data-l="13-14"><div>Des cases aux pixels : la <strong>colonne</strong> donne x (horizontal), la <strong>ligne</strong> donne y (vertical). Avec la constante plutôt qu'un 30 écrit à la main.</div></li><li data-l="15-16"><div>Si la case est un mur, on colle l'image du mur à cette position. Les cases « 0 » n'ont besoin de rien : le sol est déjà dessous.</div></li><li data-l="17"><div><strong>À toi</strong> : deux <span class="nom">elif</span> sur le même modèle, alignés avec le <span class="nom">if</span>.</div></li></ol></figure>
+<figure class="py-bloc"><div class="code"><div class="code-head"><span>labyrinthe.py</span><span class="etiquette">trois ajouts</span></div><pre class="py">from classes import *   # en haut, avec les autres imports
+
+# Avant les boucles, juste après l'image d'accueil :
+fond = pygame.image.load(IMAGE_FOND).convert()
+
+# Après la boucle d'accueil, à la place du print du choix :
+    if choix is not None:
+        niveau = Niveau(choix)
+        niveau.generer()
+        fenetre.blit(fond, (0, 0))
+        niveau.afficher(fenetre)
+        pygame.display.flip()
+        pygame.time.wait(2000)</pre></div><ol class="explic"><li data-l="1"><div>Importe tes classes, comme les constantes. Sans cette ligne : « NameError: name 'Niveau' is not defined ».</div></li><li data-l="4"><div>Le sol, chargé une seule fois avant les boucles, comme l'accueil. Inutile de le recharger à chaque partie.</div></li><li data-l="7"><div>Si un niveau a été choisi. Décalé une fois : dans la boucle principale, après la boucle d'accueil.</div></li><li data-l="8"><div>Fabrique un niveau avec le nom du fichier choisi (« n1 » ou « n2 »). Forcément après l'ouverture de la fenêtre, à cause de <span class="nom">convert</span>.</div></li><li data-l="9"><div>Lit le fichier. Fabriquer l'objet ne suffit pas : il faut appeler <span class="nom">generer</span>.</div></li><li data-l="10-11"><div>Les calques : d'abord le sol sur toute la fenêtre, puis les murs, le départ et l'arrivée par-dessus.</div></li><li data-l="12"><div>On montre le résultat.</div></li><li data-l="13"><div>Pause de 2000 millisecondes, soit 2 secondes. C'est provisoire : à l'étape 6, la boucle de jeu prendra sa place.</div></li></ol></figure>
+
       <h3>Ta mission</h3>
       <ol class="mission">
-        <li><strong>Charge les images du décor à la création du niveau</strong> : le mur, le départ et l'arrivée, chacune dans un attribut. Choisis bien entre <span class="nom">convert</span> et <span class="nom">convert_alpha</span> pour chacune.</li>
-        <li><strong>Ajoute une méthode <span class="nom">afficher</span></strong> qui reçoit la fenêtre. Elle parcourt la structure avec un double parcours, calcule les pixels de chaque case, et colle l'image du mur, du départ ou de l'arrivée selon le caractère.</li>
-        <li><strong>Dans le programme principal</strong>, importe ton fichier de classes. Puis, à l'endroit où tu affichais le nom du niveau choisi : charge le fond, crée le niveau, génère-le, colle le fond, demande au niveau de s'afficher, montre l'écran, et attends deux secondes.</li>
+        <li><strong>Charge les images du décor à la création du niveau</strong>, dans <span class="nom">__init__</span> : le mur, le départ et l'arrivée, chacune dans un attribut. Choisis bien entre <span class="nom">convert</span> et <span class="nom">convert_alpha</span> pour chacune.
+          <span class="teste">ton fichier de test de l'étape 3 plante maintenant avec « No video mode has been set ». C'est normal : préparer une image demande une fenêtre ouverte. À partir d'ici, on teste dans le vrai jeu.</span>
+        </li>
+        <li><strong>Ajoute une méthode <span class="nom">afficher</span></strong> qui reçoit la fenêtre (en plus de <span class="nom">self</span>). Commence par le double parcours seul : dans la boucle intérieure, affiche avec print le numéro de ligne, le numéro de colonne et le caractère.</li>
+        <li><strong>Branche-la dans le programme principal.</strong> Importe ton fichier de classes. Charge le fond avant les boucles. Puis, à l'endroit où tu affichais le nom du niveau choisi : crée le niveau, génère-le, colle le fond, demande au niveau de s'afficher, montre l'écran, et attends deux secondes.
+          <span class="teste">appuie sur <kbd>F1</kbd> : le sol vert s'affiche 2 secondes, et la console défile avec 225 lignes (15 × 15), de « 0 0 d » à « 14 14 a ».</span>
+        </li>
+        <li><strong>Remplace le print par le dessin</strong> : calcule x et y en pixels, puis colle l'image du mur, du départ ou de l'arrivée selon le caractère.
+          <span class="teste">toute la liste « Ça marche si… » en bas de l'étape.</span>
+        </li>
       </ol>
 
       <div class="questions">
@@ -760,7 +1096,7 @@ footer .wrap-in { max-width: 1180px; margin: 0 auto; padding-block: 24px 40px; }
 
     <!-- ================= ÉTAPE 5 ================= -->
     <section id="etape-5" data-step="5">
-      <div class="section-head"><div class="tile">5</div><div><span class="kicker">Étape 5 sur 6</span><h2>Créer le singe</h2></div></div>
+      <div class="section-head"><div class="tile">5</div><div><span class="kicker">Étape 5 sur 6 · Difficulté ★★★</span><h2>Créer le singe</h2></div></div>
       <dl class="fiche">
         <dt>Objectif</dt><dd>une classe <span class="nom">Perso</span> qui sait où est le singe, quelle image afficher, et comment se déplacer sans traverser les murs.</dd>
         <dt>Fichier</dt><dd><span class="nom">classes.py</span></dd>
@@ -798,10 +1134,50 @@ footer .wrap-in { max-width: 1180px; margin: 0 auto; padding-block: 24px 40px; }
           <tr><td>bas</td><td class="trou">?</td><td class="trou">?</td><td class="trou">?</td><td class="trou">?</td></tr>
         </table>
       </div>
+      <div class="note astuce">
+        <span class="label">Comment le singe voit les murs</span>
+        <p>Le singe garde le niveau dans un attribut. Depuis une méthode du singe, on atteint donc la structure en trois étages reliés par des points : <span class="nom">self</span> (le singe), puis son attribut niveau, puis l'attribut structure de ce niveau. Ensuite viennent les deux numéros entre crochets : la ligne, puis la colonne. Pour la case à droite du singe, c'est la ligne du singe et sa colonne plus un.</p>
+      </div>
+      <h3>Le code, ligne par ligne</h3>
+      <p>Le code ci-dessous correspond aux missions 1 et 2. Compare la direction « droite » avec la première ligne de ton tableau : c'est exactement la même chose, traduite en Python.</p>
+<figure class="py-bloc"><div class="code"><div class="code-head"><span>classes.py</span><span class="etiquette">à la suite, sous la classe Niveau</span></div><pre class="py">class Perso:
+    """Le singe : sa position, son image, ses déplacements."""
+
+    def __init__(self, niveau):
+        self.droite = pygame.image.load("images/singe_droite.png").convert_alpha()
+        self.gauche = pygame.image.load("images/singe_gauche.png").convert_alpha()
+        self.haut = pygame.image.load("images/singe_haut.png").convert_alpha()
+        self.bas = pygame.image.load("images/singe_bas.png").convert_alpha()
+        self.case_x = 0
+        self.case_y = 0
+        self.x = 0
+        self.y = 0
+        self.image = self.bas
+        self.niveau = niveau
+
+    def deplacer(self, direction):
+        """Avance d'une case si c'est possible, et tourne le singe."""
+        if direction == "droite":
+            if self.case_x &lt; NOMBRE_SPRITE_COTE - 1:
+                if self.niveau.structure[self.case_y][self.case_x + 1] != "m":
+                    self.case_x += 1
+                    self.x = self.case_x * TAILLE_SPRITE
+            self.image = self.droite
+        # ✏️ À toi : elif pour "gauche", "haut" et "bas" (aide-toi de ton tableau)</pre></div><ol class="explic"><li data-l="1-2"><div>La deuxième classe, sous Niveau mais pas dedans : le mot <span class="nom">class</span> est tout à gauche.</div></li><li data-l="4"><div>Le singe reçoit le niveau à sa création : <span class="nom">Perso(niveau)</span>.</div></li><li data-l="5-8"><div>Les 4 images, chargées une seule fois. <span class="nom">convert_alpha()</span> garde le fond transparent : sans ça, un carré noir entoure le singe.</div></li><li data-l="9-10"><div>La position en cases : colonne 0, ligne 0, c'est le départ.</div></li><li data-l="11-12"><div>La position en pixels, celle dont <span class="nom">blit</span> a besoin. Au départ : (0, 0).</div></li><li data-l="13"><div>L'image du moment. Au départ, le singe est de face.</div></li><li data-l="14"><div>On garde le niveau, pour pouvoir regarder ses murs depuis <span class="nom">deplacer</span>.</div></li><li data-l="16"><div><span class="nom">direction</span> sera un texte : « droite », « gauche », « haut » ou « bas ».</div></li><li data-l="18"><div>Est-ce la direction « droite » ?</div></li><li data-l="19"><div><strong>Temps 1, le bord</strong> : la dernière colonne porte le numéro 15 − 1 = 14. On n'avance que si on est avant.</div></li><li data-l="20"><div><strong>Temps 2, le mur</strong> : dans la structure du niveau, même ligne (<span class="nom">case_y</span>), colonne suivante (<span class="nom">case_x + 1</span>). La ligne d'abord ! <span class="nom">!= "m"</span> veut dire « n'est pas un mur ».</div></li><li data-l="21-22"><div><strong>Temps 3</strong> : on avance d'une colonne, puis on recalcule x. y ne change pas, on reste sur la même ligne.</div></li><li data-l="23"><div><strong>Temps 4</strong>, décalé moins loin que les lignes 21–22 : l'image change même si le singe est bloqué.</div></li><li data-l="24"><div><strong>À toi</strong> : trois <span class="nom">elif direction == …</span>, alignés avec le <span class="nom">if</span> de la ligne 18. Ton tableau sur papier te donne les 4 temps de chacun.</div></li></ol></figure>
+
       <ol class="mission">
-        <li><strong>Crée la classe <span class="nom">Perso</span></strong> avec toutes les informations du premier tableau. Elle reçoit le niveau à sa création.</li>
-        <li><strong>Écris la méthode <span class="nom">deplacer</span></strong> pour les quatre directions, en suivant ton tableau.</li>
+        <li><strong>Crée la classe <span class="nom">Perso</span></strong> avec toutes les informations du premier tableau. En plus de <span class="nom">self</span>, elle reçoit le niveau à sa création.</li>
+        <li><strong>Écris la méthode <span class="nom">deplacer</span> pour la droite seulement.</strong> Une condition vérifie que la direction reçue est le texte « droite ». Dedans, suis les quatre temps : bord, mur, avancer et recalculer x, changer d'image. Attention au décalage : le changement d'image est décalé moins loin que l'avancée, pour se faire même quand le singe est bloqué.
+          <span class="teste">dans le programme principal, juste après avoir créé le niveau, crée le singe, demande-lui d'aller trois fois à droite, puis affiche sa colonne et son x avec print. Sur le niveau 1, tu dois obtenir 3 et 90. Essaie 6 fois à droite : il est bloqué par le mur de la colonne 5, donc tu dois obtenir 4 et 120.</span>
+        </li>
+        <li><strong>Ajoute les trois autres directions</strong> avec des « sinon si », en suivant ton tableau.
+          <span class="teste">depuis le départ du niveau 1, demande « bas » : le singe ne bouge pas (mur juste en dessous). Demande « haut » : il ne bouge pas (bord). Demande « gauche » : pareil. Seule la droite fonctionne. Enlève ces essais avant l'étape 6.</span>
+        </li>
       </ol>
+
+      <div class="animateur">
+        <span><strong>Point d'étape avec l'animateur.</strong> Montre ton tableau rempli sur papier et le résultat de tes tests dans la console. C'est la dernière marche avant de pouvoir jouer.</span>
+      </div>
 
       <div class="indices">
         <details class="indice"><summary><span><span class="lvl">Indice 1</span>Pourquoi la colonne 14 et pas 15 ?</span></summary><div class="body">
@@ -821,14 +1197,14 @@ footer .wrap-in { max-width: 1180px; margin: 0 auto; padding-block: 24px 40px; }
           <li>le fichier se lance sans erreur de syntaxe ;</li>
           <li>chaque direction teste le bord, puis le mur, puis avance, et change toujours l'image.</li>
         </ul>
-        <p style="margin:6px 0 0;color:var(--muted);font-size:0.92rem">On ne peut pas encore jouer : on vérifiera vraiment à l'étape 6. Si tu veux tester tout de suite, crée un singe dans ton fichier de test, déplace-le, et affiche sa position dans la console.</p>
+        <p style="margin:6px 0 0;color:var(--muted);font-size:0.92rem">On ne peut pas encore jouer : on vérifiera vraiment à l'étape 6.</p>
         <label class="done-toggle"><input type="checkbox" data-done="5" id="done-5"> J'ai terminé l'étape 5</label>
       </div>
     </section>
 
     <!-- ================= ÉTAPE 6 ================= -->
     <section id="etape-6" data-step="6">
-      <div class="section-head"><div class="tile">6</div><div><span class="kicker">Étape 6 sur 6</span><h2>La boucle de jeu</h2></div></div>
+      <div class="section-head"><div class="tile">6</div><div><span class="kicker">Étape 6 sur 6 · Difficulté ★★☆</span><h2>La boucle de jeu</h2></div></div>
       <dl class="fiche">
         <dt>Objectif</dt><dd>déplacer le singe avec les flèches, revenir à l'accueil avec <kbd>Échap</kbd> ou en atteignant les bananes.</dd>
         <dt>Fichier</dt><dd><span class="nom">labyrinthe.py</span> (tu remplaces le test de l'étape 4)</dd>
@@ -852,18 +1228,54 @@ footer .wrap-in { max-width: 1180px; margin: 0 auto; padding-block: 24px 40px; }
         <div class="outil"><span class="noms">tout le reste</span><span>tu as déjà tous les autres outils : l'horloge, les événements, <span class="nom">blit</span>, <span class="nom">flip</span>, tes classes.</span></div>
       </div>
 
+      <h3>Le code, ligne par ligne</h3>
+      <p>La dernière pièce du puzzle. Il te reste deux trous à combler : les flèches (ligne 19) et la victoire (ligne 26).</p>
+<figure class="py-bloc"><div class="code"><div class="code-head"><span>labyrinthe.py</span><span class="etiquette">remplace le test de l'étape 4</span></div><pre class="py">    if choix is not None:
+        niveau = Niveau(choix)
+        niveau.generer()
+        singe = Perso(niveau)
+
+        continuer_jeu = True
+        while continuer_jeu:
+            horloge.tick(30)
+
+            for event in pygame.event.get():
+                if event.type == QUIT:
+                    continuer_jeu = False
+                    continuer = False
+                elif event.type == KEYDOWN:
+                    if event.key == K_ESCAPE:
+                        continuer_jeu = False
+                    elif event.key == K_RIGHT:
+                        singe.deplacer("droite")
+                    # ✏️ À toi : les 3 autres flèches
+
+            fenetre.blit(fond, (0, 0))
+            niveau.afficher(fenetre)
+            fenetre.blit(singe.image, (singe.x, singe.y))
+            pygame.display.flip()
+
+            # ✏️ À toi : la victoire (le singe est-il sur la case "a" ?)</pre></div><ol class="explic"><li data-l="1-3"><div>Comme à l'étape 4, mais sans la pause de 2 secondes.</div></li><li data-l="4"><div>Le singe, fabriqué dans ce niveau. Après le niveau, puisqu'il en a besoin.</div></li><li data-l="6-7"><div>La boucle de jeu, avec sa propre variable. Décalée deux fois : dans le <span class="nom">if</span>, lui-même dans la boucle principale.</div></li><li data-l="8"><div>Même vitesse qu'à l'accueil.</div></li><li data-l="10"><div>La lecture des événements, comme d'habitude.</div></li><li data-l="11-13"><div>La croix arrête la partie <em>et</em> le programme.</div></li><li data-l="14-16"><div>Échap n'arrête que la partie : la boucle principale reprend et réaffiche l'accueil.</div></li><li data-l="17-18"><div>Flèche droite : on demande au singe d'aller à droite. C'est sa méthode qui vérifie les murs, pas la boucle.</div></li><li data-l="19"><div><strong>À toi</strong> : <span class="nom">K_LEFT</span>, <span class="nom">K_UP</span> et <span class="nom">K_DOWN</span>, sur le même modèle. Le texte donné doit être exactement celui que teste <span class="nom">deplacer</span>.</div></li><li data-l="21"><div>Décalé comme le <span class="nom">for</span> : on est sorti de la lecture des événements. On redessine tout, une fois par tour. D'abord le sol, qui efface l'ancienne position du singe.</div></li><li data-l="22"><div>Puis le niveau par-dessus.</div></li><li data-l="23"><div>Puis le singe tout en haut, avec son image actuelle, à sa position en pixels.</div></li><li data-l="24"><div>Un seul <span class="nom">flip</span> par tour, à la fin : l'image apparaît d'un coup, sans clignoter.</div></li><li data-l="26"><div><strong>À toi</strong> : regarde la structure du niveau à la ligne du singe, puis à sa colonne. Si c'est « a », écris un petit bravo avec <span class="nom">print</span> et passe <span class="nom">continuer_jeu</span> à <span class="nom">False</span>.</div></li></ol></figure>
+
       <h3>Ta mission</h3>
+      <div class="note piege">
+        <span class="label">Où placer la boucle de jeu ?</span>
+        <p>C'est le piège de décalage le plus courant. La boucle de jeu se place <strong>dans</strong> le bloc « si un niveau a été choisi », lui-même <strong>dans</strong> la boucle principale. Elle n'est donc pas dans la boucle d'accueil : celle-ci est terminée quand on arrive là. Compte tes décalages : boucle principale tout à gauche, le « si un niveau a été choisi » décalé une fois, la boucle de jeu décalée deux fois. La fermeture de Pygame, elle, reste tout en bas, sans aucun décalage.</p>
+      </div>
       <ol class="mission">
-        <li><strong>Prépare la partie</strong> : charge le fond, crée et génère le niveau choisi, crée le singe dans ce niveau.</li>
-        <li><strong>Écris la boucle de jeu</strong>, avec sa propre variable vrai/faux. À chaque tour, limite la vitesse puis lis les événements :
-          <ul>
-            <li>croix : on arrête la partie <em>et</em> tout le programme ;</li>
-            <li><kbd>Échap</kbd> : on arrête seulement la partie ;</li>
-            <li>chaque flèche : on demande au singe de se déplacer dans la bonne direction.</li>
-          </ul>
+        <li><strong>Prépare la partie</strong> : à la place du test de l'étape 4 (enlève l'attente de 2 secondes et les essais de l'étape 5), crée et génère le niveau choisi, crée le singe dans ce niveau (le fond est déjà chargé avant les boucles).</li>
+        <li><strong>Écris la boucle de jeu</strong>, avec sa propre variable vrai/faux. À chaque tour : limite la vitesse, lis les événements, et gère d'abord seulement la croix (on arrête la partie <em>et</em> tout le programme) et <kbd>Échap</kbd> (on arrête seulement la partie).
+          <span class="teste">après <kbd>F1</kbd>, l'écran reste figé sur l'accueil (on ne dessine rien encore), <kbd>Échap</kbd> ramène à l'accueil, la croix ferme tout.</span>
         </li>
-        <li><strong>Redessine l'écran</strong> dans le bon ordre. Le singe se colle avec son image actuelle, à sa position en pixels.</li>
-        <li><strong>Vérifie la victoire</strong> : si la case de la structure qui correspond à la position du singe est l'arrivée, la partie s'arrête. Un petit message de félicitations dans la console fait plaisir.</li>
+        <li><strong>Redessine l'écran</strong> à chaque tour, après la lecture des événements, dans le bon ordre : le fond, puis le niveau, puis le singe avec son image actuelle à sa position en pixels, puis montrer.
+          <span class="teste">après <kbd>F1</kbd>, le labyrinthe s'affiche avec le singe sur la case de départ.</span>
+        </li>
+        <li><strong>Ajoute les quatre flèches</strong> : chacune demande au singe de se déplacer dans la bonne direction.
+          <span class="teste">tu peux promener le singe partout, il est bloqué par les murs et les bords. Quand il arrive sur les bananes, rien ne se passe encore : c'est la mission suivante.</span>
+        </li>
+        <li><strong>Vérifie la victoire</strong>, après le dessin : si la case de la structure qui correspond à la position du singe est l'arrivée, la partie s'arrête. Un petit message de félicitations dans la console fait plaisir.
+          <span class="teste">toute la liste « Ça marche si… » ci-dessous, sur les deux niveaux.</span>
+        </li>
       </ol>
 
       <div class="indices">
@@ -937,7 +1349,15 @@ footer .wrap-in { max-width: 1180px; margin: 0 auto; padding-block: 24px 40px; }
     <!-- ================= PIÈGES ================= -->
     <section id="pieges">
       <div class="section-head"><div class="tile ban">!</div><div><span class="kicker">Dépannage</span><h2>Pièges classiques</h2></div></div>
-      <p>Avant d'appeler à l'aide, cherche ton problème ici. Lis toujours la <strong>dernière ligne</strong> du message d'erreur : c'est elle qui dit ce qui ne va pas, et les lignes au-dessus disent où.</p>
+      <h3 style="margin-top:0.6em">Lire un message d'erreur</h3>
+      <p>Une erreur en rouge fait peur, mais c'est une aide : Python te dit exactement ce qui ne va pas. Lis-la <strong>de bas en haut</strong> :</p>
+      <ol class="etapes-pc">
+        <li><span><strong>La dernière ligne</strong> donne le type d'erreur (le mot qui finit par <em>Error</em>) et une explication en anglais. C'est la plus importante. Cherche ce mot dans le tableau ci-dessous.</span></li>
+        <li><span><strong>Juste au-dessus</strong>, une ligne qui commence par <em>File</em> donne le nom du fichier et le numéro de ligne (<em>line</em>) où ça a cassé, puis recopie cette ligne de ton programme. Va voir cette ligne, et aussi celle juste avant : une parenthèse ou un guillemet oublié se voit souvent une ligne plus haut.</span></li>
+        <li><span><strong>Si tu ne comprends toujours pas</strong>, ajoute des print juste avant la ligne fautive pour voir ce que contiennent tes variables à ce moment-là.</span></li>
+      </ol>
+      <h3>Les problèmes fréquents</h3>
+      <p>Avant d'appeler à l'aide, cherche ton problème ici.</p>
       <div class="table-wrap">
         <table>
           <tr><th>Ce que tu vois</th><th>La cause probable</th></tr>
@@ -954,6 +1374,10 @@ footer .wrap-in { max-width: 1180px; margin: 0 auto; padding-block: 24px 40px; }
           <tr><td><span class="nom">NameError</span> sur <span class="nom">QUIT</span> ou <span class="nom">K_F1</span></td><td>Il manque l'import de tout le contenu de <span class="nom">pygame.locals</span>.</td></tr>
           <tr><td><span class="nom">NameError</span> sur une constante</td><td>Le fichier de constantes n'est pas importé, ou le nom est mal écrit (attention aux majuscules).</td></tr>
           <tr><td><span class="nom">IndentationError</span></td><td>Un bloc n'est pas décalé correctement. Dans une classe, les méthodes sont décalées d'un cran, et leur contenu de deux.</td></tr>
+          <tr><td><span class="nom">SyntaxError</span></td><td>Une faute de « grammaire » : deux-points oubliés en fin de ligne (après un si, une boucle, une fonction, une classe), parenthèse ou guillemet pas refermé, ou un seul signe égal dans une comparaison.</td></tr>
+          <tr><td><span class="nom">TypeError</span> qui parle de <em>positional argument</em></td><td>Une méthode n'a pas reçu le bon nombre de valeurs. Souvent : <span class="nom">self</span> oublié en premier paramètre d'une méthode.</td></tr>
+          <tr><td><span class="nom">AttributeError</span></td><td>Tu demandes un attribut qui n'existe pas : nom mal écrit, ou attribut créé sans <span class="nom">self</span> et un point devant.</td></tr>
+          <tr><td>La partie revient tout de suite à l'accueil</td><td>La boucle de jeu est mal décalée, ou sa variable n'est pas remise à vrai avant la boucle.</td></tr>
         </table>
       </div>
     </section>
@@ -1009,6 +1433,59 @@ footer .wrap-in { max-width: 1180px; margin: 0 auto; padding-block: 24px 40px; }
   };
   var N = 15, T = 30;
   var NOMS = { m: "un mur", d: "le départ", a: "l'arrivée", "0": "une case vide" };
+
+  /* ================= Code Python : couleurs et explications ================= */
+  var MOTS_CLES = "import from as class def return if elif else while for in is not and or with pass break".split(" ");
+  var VALEURS = ["True", "False", "None"];
+  var FONCTIONS = "print len list open enumerate range int str".split(" ");
+  function echapper(s) { return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+  function colorer(pre) {
+    var src = pre.textContent.replace(/\s+$/, "");
+    var re = /("""[\s\S]*?"""|"(?:[^"\\\n]|\\.)*"|'(?:[^'\\\n]|\\.)*'|#[^\n]*|\d+|[A-Za-z_]\w*|[\s\S])/g;
+    var lignes = [[]], m;
+    while ((m = re.exec(src)) !== null) {
+      var t = m[0], c = "";
+      if (t.charAt(0) === '"' || (t.charAt(0) === "'" && t.length > 1)) c = "str";
+      else if (t.charAt(0) === "#") c = t.indexOf("À toi") > -1 ? "atoi" : "com";
+      else if (/^\d/.test(t)) c = "num";
+      else if (/^[A-Za-z_]/.test(t)) {
+        if (MOTS_CLES.indexOf(t) > -1) c = "kw";
+        else if (VALEURS.indexOf(t) > -1) c = "val";
+        else if (t === "self") c = "self";
+        else if (/^[A-Z][A-Z0-9_]+$/.test(t)) c = "const";
+        else if (FONCTIONS.indexOf(t) > -1 || src.charAt(re.lastIndex) === "(") c = "fn";
+        else if (/^[A-Z][a-z]/.test(t)) c = "cls";
+      }
+      t.split("\n").forEach(function (p, i) {
+        if (i > 0) lignes.push([]);
+        if (p) lignes[lignes.length - 1].push(c ? '<span class="tk-' + c + '">' + echapper(p) + "</span>" : echapper(p));
+      });
+    }
+    pre.innerHTML = lignes.map(function (l, i) {
+      return '<span class="l" data-n="' + (i + 1) + '">' + l.join("") + "</span>";
+    }).join("");
+  }
+  document.querySelectorAll("pre.py").forEach(colorer);
+  document.querySelectorAll(".py-bloc").forEach(function (bloc) {
+    var lignes = bloc.querySelectorAll("pre.py .l");
+    bloc.querySelectorAll(".explic li").forEach(function (li) {
+      var parts = li.getAttribute("data-l").split("-");
+      var a = +parts[0], b = +(parts[1] || parts[0]);
+      var ln = document.createElement("span");
+      ln.className = "ln";
+      ln.textContent = a === b ? "L" + a : "L" + a + "–" + b;
+      li.insertBefore(ln, li.firstChild);
+      li.tabIndex = 0;
+      function allumer(on) {
+        li.classList.toggle("hl", on);
+        for (var k = a; k <= b; k++) if (lignes[k - 1]) lignes[k - 1].classList.toggle("hl", on);
+      }
+      li.addEventListener("mouseenter", function () { allumer(true); });
+      li.addEventListener("mouseleave", function () { allumer(false); });
+      li.addEventListener("focus", function () { allumer(true); });
+      li.addEventListener("blur", function () { allumer(false); });
+    });
+  });
 
   /* ================= Copier ================= */
   function copier(bouton, texte, cible, libelle) {
